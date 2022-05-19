@@ -1,10 +1,11 @@
 <?php
-include "action.php";
+include "classes/action.php";
 
 if (isset($_POST["submit"])) {
     // print_r($_POST);
     $obj->add($_POST);
 }
+
 // if (isset($_GET["msg"])) {
 //     $msg = $_GET["msg"];
 //     echo "
@@ -15,21 +16,10 @@ if (isset($_POST["submit"])) {
 //         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
 //       </div>";
 // }
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <title>Add Product</title>
-    <link rel="stylesheet" href="" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
+$title = "Add Products";
+include "header.php";
+?>
 
 <body class="d-flex flex-column min-vh-100 m-0 p-0">
 
@@ -51,17 +41,17 @@ if (isset($_POST["submit"])) {
         <div class="shadow mx-3 mx-md-auto mb-3 p-3 col-md-8 col-lg-6 border rounded-3 ">
             <div class="mb-3">
                 <label for="sku" class="form-label">SKU</label>
-                <input required type="text" name="sku" class="form-control" id="sku" aria-describedby="emailHelp">
+                <input required type="text" name="sku" class="form-control" id="sku" pattern="[A-Za-z0-9]{1,50}" aria-describedby=" emailHelp">
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input required type="text" name="name" class="form-control" id="name">
+                <input required type="text" name="name" class="form-control" id="name" pattern="[A-Za-z0-9]{1,50}">
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price ($)</label>
-                <input required type="number" name="price" step="0.01" class="form-control" id="price">
-            </div>
-            <div class="mb-3">
+                <input required type="number" name="price" step="0.01" class="form-control" id="price" min="0.01">
+            </div>1
+            <div class=" mb-3">
                 <label for="disabledSelect" class="form-label">Product Type</label>
                 <div id="help" class="form-text">Select the type of product to add.</div>
                 <select id="productType" required name="type" onchange="formFunction(this.value)" class="form-select">
@@ -80,9 +70,7 @@ if (isset($_POST["submit"])) {
 
 
     </form>
-    <footer class="mt-auto container d-flex align-items-center justify-content-center border-top" style="height: 100px;">
-        <p class=" ">Scandiweb</p>
-    </footer>
+    <?php include "footer.php"; ?>
     <script src="js/main.js"></script>
 </body>
 

@@ -34,8 +34,8 @@ class Query extends Database
                 header("location:index.php?msg=Done");
             }
         } catch (Exception $e) {
-            $msg = $e->getMessage();
-            header("location:add_product.php?msg=$msg");
+            $error = $e->getMessage();
+            header("location:add_product.php?error=$error");
         }
     }
     function read($table)

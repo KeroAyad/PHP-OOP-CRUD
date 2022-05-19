@@ -1,28 +1,17 @@
 <?php
 
-include "action.php";
+include "classes/action.php";
 
 if (isset($_POST['delete']) && isset($_POST['sku'])) {
     $obj->remove($_POST['sku']);
 }
 
 
+
+$title = "Product List";
+include "header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <title>List Products</title>
-    <link rel="stylesheet" href="" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
 
 <body class="d-flex flex-column min-vh-100 m-0 p-0">
 
@@ -72,9 +61,8 @@ if (isset($_POST['delete']) && isset($_POST['sku'])) {
 
 
     </form>
-    <footer class="mt-auto container d-flex align-items-center justify-content-center border-top" style="height: 100px;">
-        <p class=" ">Scandiweb</p>
-    </footer>
+    <?php include "footer.php"; ?>
+
 </body>
 
 </html>
