@@ -12,8 +12,14 @@ class Action
         $obj = $class->newInstance($post);
 
 
+        if ($this->checkPK($post['sku'], "sku", $this->table)) {
+            header("location:add_product.php?error=SKU exists");
+            // return $post;
+        } else {
+            $obj->insert();
+        }
 
-        $obj->insert();
+
     }
     function show()
     {
