@@ -1,7 +1,7 @@
 <?php
 include "products.php";
 
-class Action
+class Action extends Query
 {
     protected $table = "products";
 
@@ -23,13 +23,11 @@ class Action
     }
     function show()
     {
-        $obj = new Query;
-        return $obj->read($this->table);
+        return $this->read($this->table);
     }
     function remove($post)
     {
-        $obj = new Query;
-        $obj->delete($this->table, "sku", $post);
+        $this->delete($this->table, "sku", $post);
     }
 }
 $obj = new Action;
