@@ -38,6 +38,19 @@ class Query extends Database
             header("location:add_product.php?error=$error");
         }
     }
+    function checkPK($var, $PK, $table)
+    {
+
+        $sql = "SELECT $PK FROM $table WHERE $PK='$var'";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function read($table)
     {
         $sql = "SELECT * FROM " . $table;
